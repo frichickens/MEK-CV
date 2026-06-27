@@ -13,8 +13,7 @@ The headline metric is **mean-class accuracy** (the unweighted mean of per-class
 not overall accuracy: under severe class imbalance (~17× gap between *happy* and *fear*),
 overall accuracy hides the collapse of the minority classes that MEK is built to fix.
 
-> **Environment:** run everything in the **`baodq` conda env** (never `base`); install extra
-> packages there. Datasets use the `train/<class>/`, `test/<class>/` `ImageFolder` layout, so
+> Datasets use the `train/<class>/`, `test/<class>/` `ImageFolder` layout, so
 > any Kaggle FER/RAF mirror works (pass `--data-root`).
 
 | Component | Entry point |
