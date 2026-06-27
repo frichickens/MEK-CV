@@ -1,0 +1,7 @@
+slug,arch,dataset,status,test_accuracy,test_mean_class_acc,test_f1,best_val_acc,LR,BATCH_SIZE,EPOCHS,DROPOUT,LABEL_SMOOTH,FLIP_LOSS_WEIGHT,WEIGHT_DECAY,SEED,epochs_run
+fer2013-mek-resnet18-lr1e4-l025,resnet18,fer2013,done,0.7081359624862671,0.692802647382844,0.6951848864555359,0.7268292903900146,0.0001,64,80,0.4,0.1,0.25,0.0001,42,51
+fer2013-mek-resnet18-lr1e4-l01,resnet18,fer2013,done,0.7139871716499329,0.7010810884868579,0.7025680541992188,0.7257839441299438,0.0001,64,80,0.4,0.1,0.1,0.0001,42,67
+fer2013-mek-resnet34-lr1e4-l025,,,pending,,,,,,,,,,,,,
+fer2013-mek-resnet34-lr1e4-l01,resnet34,fer2013,done,0.7205349802970886,0.6959914333351673,0.7072873711585999,0.7310104370117188,0.0001,64,80,0.45,0.1,0.1,0.0001,42,41
+fer2013-resnet18-lr1e2-wd1e4-do30,,,pending,,,,,,,,,,,,,
+fer2013-resnet34-lr1e2-wd1e4-do30,,,pending,,,,,,,,,,,,,

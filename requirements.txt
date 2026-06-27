@@ -1,0 +1,10 @@
+torch>=2.3
+torchvision>=0.18
+torchmetrics>=1.0
+numpy
+matplotlib
+Pillow
+opencv-python
+gradio>=4.0
+wandb
+python-dotenv

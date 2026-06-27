@@ -1,0 +1,68 @@
+# ════════════════════════════════════════════════════════════════════
+#  Kaggle tuning setup — FILL IN THE  <...>  PLACEHOLDERS, then tell me.
+#  Anything you leave as <...> I'll treat as "not provided".
+#  DO NOT paste the CONTENTS of kaggle.json here — that file stays in
+#  C:\Users\baolo\.kaggle\ . This file only points at it.
+# ════════════════════════════════════════════════════════════════════
+
+# --------------------------------------------------------------------
+# 1) ACCOUNTS
+#    One entry per Kaggle account you want me to use. Multiple accounts
+#    let me run a few configs in parallel (~30 GPU-h/week each).
+#    Put each account's kaggle.json somewhere on disk and point to it.
+# --------------------------------------------------------------------
+accounts:
+  - username: baobaoo             # e.g. quanghunglion
+    token_path: C:\Users\baolo\.kaggle\kaggle2.json
+  # - username: <second-username>               # uncomment to add more
+  #   token_path: C:\Users\baolo\.kaggle\kaggle-account2.json
+
+# --------------------------------------------------------------------
+# 2) DATASETS to attach to every kernel  (Kaggle "owner/slug" form)
+#    Found in the script defaults below — change only if yours differ.
+# --------------------------------------------------------------------
+datasets:
+  fer2013:   msambare/fer2013
+  rafdb:     shuvoalok/raf-db-dataset
+  # Face-pretrained backbone weights (only needed for MS-Celeb runs).
+  # Leave as <...> if you're not doing the MS-Celeb reproduction.
+  face_weights: <...>
+
+# --------------------------------------------------------------------
+# 3) WHAT TO TUNE
+# --------------------------------------------------------------------
+target:
+  script:  kaggle/mek_resnet18.py, kaggle/mek_resnet34.py, kaggle/resnet18.py, kaggle/resnet34.py     # which script to run
+  dataset: fer2013                      # "fer2013" or "rafdb"
+  arch:    resnet18, resnet34                    # resnet18 | resnet34
+
+# Search space. For each knob: give a list of values to try, or leave
+# the single default to hold it fixed. Keep the total small to start
+# (quota is limited). I'll combine these into configs.
+search_space:
+  LR:               [1e-4]            # e.g. [5e-5, 1e-4, 3e-4]
+  LABEL_SMOOTH:     [0.1]             # ε   e.g. [0.1, 0.2]
+  FLIP_LOSS_WEIGHT: [2.0]             # λ   e.g. [1.0, 2.0, 5.0]
+  WEIGHT_DECAY:     [1e-4]
+  ARCH_DROPOUT:     [0.40]
+  BATCH_SIZE:       [64]
+
+search:
+  strategy:    grid                   # grid | random
+  max_trials:  6                      # hard cap on how many runs I launch
+  epochs:      null                   # null = use script default; or set lower (e.g. 25) for faster scans
+  metric:      val_acc                # what I optimize: val_acc | test_acc
+
+# --------------------------------------------------------------------
+# 4) GUARDRAILS  (so I don't burn your quota unexpectedly)
+# --------------------------------------------------------------------
+limits:
+  max_parallel_per_account: 1         # Kaggle realistically allows ~1-2 GPU kernels at once
+  stop_after_total_runs:    6         # safety stop across the whole session
+  notify_me_each:           true      # report back after every finished run, not just at the end
+
+# --------------------------------------------------------------------
+# 5) NOTES (optional) — anything else: deadlines, "don't touch account X
+#    on weekdays", a target accuracy to beat, etc.
+# --------------------------------------------------------------------
+notes: <When tuning, Respect the integrity, Verify carefully, make no mistake>
