@@ -139,14 +139,6 @@ Add `--wandb` to any trainer to log to W&B (reads `WANDB_API_KEY` from `.env`).
 `--resume CKPT --eval-only` re-runs test only. **Kaggle**: paste a `kaggle/*.py` script, set
 the toggles at the top (`DATASET`, `USE_FACE_BACKBONE`, `FACE_WEIGHTS_PATH`), run.
 
-## Building the report
-
-```bash
-conda run -n baodq python docs/report/figures/make_figures.py        # vector data figures
-conda run -n baodq python docs/report/figures/make_extra_figures.py  # training curves (from logs) + extras
-cd docs/report && conda run -n baodq tectonic main.tex               # → main.pdf
-```
-
 ## References
 
 - MEK paper — Zhang et al., *Leave No Stone Unturned*, NeurIPS 2023: [arXiv:2310.19636](https://arxiv.org/abs/2310.19636).
