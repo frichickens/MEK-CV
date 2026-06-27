@@ -44,8 +44,7 @@ preserved or improved.
 **MS-Celeb-1M face-pretrained** one lifts RAF-DB mean-class **0.7910 → 0.8137** (+2.3 pt) —
 more than going from RN18 to RN34 — and matches the original paper on the hardest minority
 classes (disgust **0.731** vs. paper 0.669; fear 0.662 = paper). Full numbers, training
-curves, the ablation, and a grounded comparison to the paper are in
-[`docs/report/main.pdf`](docs/report/main.pdf).
+curves, the ablation, and a grounded comparison to the paper are provided in submitted report
 
 ### Verified checkpoints + confusion structure
 
